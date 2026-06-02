@@ -5,7 +5,7 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "node dist/index",
+        "start": "node setup-certs.js && node dist/app/index.js",
         "build": "npx tsc -p .",
         "dev": "tsc-watch --onSuccess \"node dist/index\"",
         "studio": "drizzle-kit studio",
