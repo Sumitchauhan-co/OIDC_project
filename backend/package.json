@@ -9,7 +9,7 @@
         "db:generate": "drizzle-kit generate",
         "db:migrate": "drizzle-kit migrate",
         "prestart": "npm run db:migrate",
-        "start": "node dist/app/index.js",
+        "start": "node dist/index.js",
         "dev": "tsc-watch --onSuccess \"node dist/index\"",
         "studio": "drizzle-kit studio"
     },
