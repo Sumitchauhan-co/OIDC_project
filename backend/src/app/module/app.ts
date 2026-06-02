@@ -22,11 +22,11 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve('public')));
 
-app.use('/api', authRouter);
+app.use('/api/auth', authRouter);
 
 app.use(oidcRouter);
 
-app.use('/admin', adminRouter);
+app.use('/api/admin', adminRouter);
 
 interface HttpError extends Error {
     statusCode?: number;

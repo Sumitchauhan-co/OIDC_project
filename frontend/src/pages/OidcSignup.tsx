@@ -83,7 +83,7 @@ const OidcSignup = () => {
         const fetchAppName = async () => {
             if (!clientId) return;
             try {
-                const res = await api.get(`/admin/application/${clientId}`);
+                const res = await api.get(`/api/admin/application/${clientId}`);
                 setAppName(res.data.data.name);
             } catch (error) {
                 setAppName('Unknown Application');

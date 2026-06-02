@@ -40,7 +40,7 @@ const Applications = () => {
 
         const registrationPromise = async () => {
             try {
-                await api.post('/admin/application', formattedData);
+                await api.post('/api/admin/application', formattedData);
                 navigate('/dashboard/clients');
                 return 'Application registered successfully!';
             } catch (error) {

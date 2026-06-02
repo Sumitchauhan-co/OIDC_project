@@ -32,7 +32,7 @@ const Signin = () => {
     const onSubmit = async (data: Data) => {
         const signinPromise = async () => {
             try {
-                const res = await api.post('/api/signin', data);
+                const res = await api.post('/api/auth/signin', data);
                 const newToken = res.data.data.accessToken;
                 setAccessToken(newToken);
                 signin(res.data);

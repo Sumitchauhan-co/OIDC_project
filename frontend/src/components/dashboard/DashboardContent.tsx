@@ -82,8 +82,8 @@ const DashboardContent = () => {
         const fetchData = async () => {
             try {
                 const [appRes, statRes] = await Promise.all([
-                    api.get('/admin/application'),
-                    api.get('/admin/stat'),
+                    api.get('/api/admin/application'),
+                    api.get('/api/admin/stat'),
                 ]);
 
                 setApplication(appRes.data.data);

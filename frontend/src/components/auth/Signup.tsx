@@ -38,7 +38,7 @@ const Signup = () => {
     const onSubmit = async (data: Data) => {
         const signupPromise = async () => {
             try {
-                const res = await api.post('/api/signup', data);
+                const res = await api.post('/api/auth/signup', data);
                 const params = searchParams.toString();
 
                 const newToken = res.data.data.accessToken;

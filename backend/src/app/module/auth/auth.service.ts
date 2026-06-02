@@ -77,7 +77,7 @@ export const signupService = async ({
         //         from: process.env.SENDER_EMAIL,
         //         to: user.email,
         //         subject: 'Verify your email',
-        //         html: `<a href="${process.env.BASE_URL}/verify-email?token=${token}">Verify Email</a>`,
+        //         html: `<a href="${process.env.FRONTEND_URL}/verify-email?token=${token}">Verify Email</a>`,
         //     });
 
         //     console.log('Message sent: %s', info.messageId);
@@ -243,7 +243,7 @@ export const forgotPasswordService = async (email: string) => {
             .where(eq(usersTable.email, email));
     });
 
-    const resetURL = `${process.env.BASE_URL}/reset-password?token=${token}`;
+    const resetURL = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
 
     // nodemailer logic
 

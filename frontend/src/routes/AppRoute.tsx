@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import AppLayout from '@/layouts/AppLayout';
 import LoadingAnimation from '@/shared/LoadingAnimation';
 import LegalSection from '@/pages/Legal';
+import ForgotPasswordPage from '@/components/auth/ForgotPassword';
+import ResetPasswordPage from '@/components/auth/ResetPassword';
 
 const Home = lazy(() => import('@/pages/Home'));
 const Signin = lazy(() => import('@/components/auth/Signin'));
@@ -35,6 +37,14 @@ const AppRoute = () => {
                     <Route
                         path="/signup"
                         element={<Signup />}
+                    />
+                    <Route
+                        path="/forgot-password"
+                        element={<ForgotPasswordPage />}
+                    />
+                    <Route
+                        path="/reset-password"
+                        element={<ResetPasswordPage />}
                     />
                 </Route>
 

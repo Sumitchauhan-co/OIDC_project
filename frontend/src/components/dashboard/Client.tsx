@@ -50,7 +50,7 @@ const ClientsPage = () => {
     useEffect(() => {
         const applicationPromise = async () => {
             try {
-                const res = await api.get('/admin/application');
+                const res = await api.get('/api/admin/application');
 
                 setApplication(res.data.data);
                 return 'Clients updated';
