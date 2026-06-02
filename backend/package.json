@@ -5,12 +5,13 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "node dist/index.js",
         "build": "tsc",
-        "dev": "tsc-watch --onSuccess \"node dist/index\"",
-        "studio": "drizzle-kit studio",
         "db:generate": "drizzle-kit generate",
-        "db:migrate": "drizzle-kit migrate"
+        "db:migrate": "drizzle-kit migrate",
+        "prestart": "npm run db:migrate",
+        "start": "node dist/app/index.js",
+        "dev": "tsc-watch --onSuccess \"node dist/index\"",
+        "studio": "drizzle-kit studio"
     },
     "keywords": [],
     "author": "",
