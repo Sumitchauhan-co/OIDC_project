@@ -7,7 +7,7 @@
     "scripts": {
         "build": "tsc",
         "db:generate": "drizzle-kit generate",
-        "db:migrate": "drizzle-kit migrate --url=$DATABASE_URL",
+        "db:migrate": "drizzle-kit migrate",
         "prestart": "npm run db:migrate",
         "start": "node dist/app/index.js",
         "dev": "tsc-watch --onSuccess \"node dist/index\"",
