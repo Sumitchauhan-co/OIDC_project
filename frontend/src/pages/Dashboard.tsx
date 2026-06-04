@@ -2,10 +2,9 @@ import {
     SidebarProvider,
     SidebarInset,
     SidebarTrigger,
-    useSidebar,
 } from '@/components/ui/sidebar';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import useAuthStore from '@/store/store';
 import { toast } from 'sonner';
@@ -20,24 +19,17 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { ModeToggle } from '@/theme/ModeToggle';
-import Icons from '@/utils/Icons';
 
 function DashboardContent() {
     const user = useAuthStore((store) => store.user);
     const navigate = useNavigate();
     const signout = useAuthStore((store) => store.signout);
 
-    // Hooks run safely downstream here!
-    const { open, isMobile } = useSidebar();
-
     const userDisplayName = user
         ? `${user.firstName} ${user.lastName}`
         : 'Workspace User';
     const userInitial = user?.firstName?.charAt(0).toUpperCase() || 'W';
     const userEmail = user?.email || 'user@protoauth.internal';
-
-    // Show custom logo emblem link when sidebar collapses or on mobile screens
-    const shouldShowLogoBadge = isMobile || !open;
 
     useEffect(() => {
         if (!user) {
@@ -60,19 +52,6 @@ function DashboardContent() {
                 <header className="flex h-16 items-center justify-between border-b px-4 gap-2 bg-white/80 dark:bg-black/80 backdrop-blur-md sticky top-0 z-40">
                     {/* Left Header Actions */}
                     <div className="flex items-center gap-2">
-                        {shouldShowLogoBadge && (
-                            <div className="flex items-center gap-2">
-                                <Link
-                                    to="/"
-                                    className="flex items-center"
-                                >
-                                    <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-200 bg-zinc-900 text-zinc-50 shadow-xs dark:border-zinc-800 dark:bg-white dark:text-zinc-950 transition-transform active:scale-95">
-                                        <Icons.Logo />
-                                    </div>
-                                </Link>
-                                <div className="bg-neutral-200 dark:bg-neutral-800 h-4 w-px shrink-0 mx-1" />
-                            </div>
-                        )}
                         <SidebarTrigger />
                         <div className="h-4 w-[1px] bg-neutral-200 dark:bg-neutral-800 mx-2" />
                         <span className="text-sm font-medium tracking-tight text-neutral-600 dark:text-neutral-400">

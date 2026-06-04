@@ -57,7 +57,7 @@ const authStore: StateCreator<
 
     signout: async () => {
         try {
-            await api.post('/api/signout');
+            await api.post('/api/auth/signout');
         } catch (error) {
             console.error(
                 'Signout API failed, but clearing local state anyway',
@@ -80,7 +80,7 @@ const authStore: StateCreator<
 
     getUser: async () => {
         try {
-            const response = await api.get(`/api/get-user`);
+            const response = await api.get(`/api/auth/get-user`);
 
             const result = response.data.data;
             if (result) {

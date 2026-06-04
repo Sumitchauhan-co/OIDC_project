@@ -9,7 +9,7 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
     const token = getAccessToken();
 
-    const skipUrls = ['/api/signin', '/api/signup'];
+    const skipUrls = ['/api/auth/signin', '/api/auth/signup'];
 
     if (skipUrls.some((url) => config.url?.includes(url))) {
         return config;
@@ -32,28 +32,31 @@ api.interceptors.response.use(
         }
 
         const isAuthPost =
-            originalRequest.url?.includes('/api/signin') ||
-            originalRequest.url?.includes('/api/signup') ||
-            originalRequest.url?.includes('/api/refresh');
+            originalRequest.url?.includes('/api/auth/signin') ||
+            originalRequest.url?.includes('/api/auth/signup') ||
+            originalRequest.url?.includes('/api/auth/refresh');
 
-        if (
-            error.response?.status === 401 && !isAuthPost
-        ) {
+        if (error.response?.status === 401 && !isAuthPost) {
             originalRequest._retry = true;
 
             try {
-                const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/refresh`, {}, {
-                    withCredentials: true
-                });
+                const res = await axios.post(
+                    `${import.meta.env.VITE_API_URL}/api/auth/refresh`,
+                    {},
+                    {
+                        withCredentials: true,
+                    },
+                );
 
-                const newAccessToken = res.data?.data?.accessToken || res.data?.accessToken;
+                const newAccessToken =
+                    res.data?.data?.accessToken || res.data?.accessToken;
 
-                if (!newAccessToken) throw new Error("No token returned");
+                if (!newAccessToken) throw new Error('No token returned');
 
                 setAccessToken(newAccessToken);
 
                 originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-                
+
                 return api(originalRequest);
             } catch (refreshError) {
                 setAccessToken(null);
