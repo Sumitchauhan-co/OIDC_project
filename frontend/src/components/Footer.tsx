@@ -7,7 +7,7 @@ import Icons from '@/utils/Icons';
 
 const Footer = () => {
     const links = [
-        { title: 'Docs', href: '/docs' },
+        { title: 'Docs', href: `${import.meta.env.VITE_DOCS_URL}` },
         { title: 'Dashboard', href: '/dashboard' },
         {
             title: 'Blog',

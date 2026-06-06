@@ -20,7 +20,7 @@ const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navLinks = [
-        { name: 'Docs', link: `/docs` },
+        { name: 'Docs', link: `${import.meta.env.VITE_DOCS_URL}` },
         { name: 'Dashboard', link: '/dashboard' },
     ];
 

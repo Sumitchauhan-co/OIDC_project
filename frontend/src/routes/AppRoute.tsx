@@ -12,7 +12,6 @@ const Signin = lazy(() => import('@/components/auth/Signin'));
 const Signup = lazy(() => import('@/components/auth/Signup'));
 const OidcSignin = lazy(() => import('@/pages/OidcSignin'));
 const OidcSignup = lazy(() => import('@/pages/OidcSignup'));
-const Docs = lazy(() => import('@/pages/Docs'));
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const DashboardContent = lazy(
     () => import('@/components/dashboard/DashboardContent'),
@@ -78,16 +77,13 @@ const AppRoute = () => {
                     />
                 </Route>
 
-                {/* Documentation */}
-                <Route
-                    path="/docs"
-                    element={<Docs />}
-                />
+                {/*  Legal section */}
                 <Route
                     path="/legal"
                     element={<LegalSection />}
                 />
 
+                {/* Global not found page */}
                 <Route
                     path="*"
                     element={<NotFound />}
